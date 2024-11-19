@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "CodeSavvy",
+  "version": "1.0",
+  "description": "CodeSavvy is a powerful Chrome extension designed to streamline web development tasks. It offers a suite of tools to enhance productivity, including the ability to unlock elements, disable loaders, clear cache, remove max length restrictions, and toggle design mode. Whether you're debugging, optimizing, or designing, CodeSavvy has you covered.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "Icons/icon.png",
+      "48": "Icons/icon.png",
+      "128": "Icons/icon.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+	"tabs",	
+  "browsingData"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
