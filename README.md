@@ -21,6 +21,8 @@ A powerful browser extension designed to enhance web page interactions by unlock
 5. **Clear Cache**  
    Clears the browser cache and reloads the current tab.
 
+![image](https://github.com/user-attachments/assets/fb912f3c-f530-48cb-840d-f6b5eb5287ca)
+
 ---
 
 ## **Installation**
