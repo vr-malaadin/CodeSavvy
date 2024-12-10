@@ -112,4 +112,4 @@ This project does not currently have a license. All rights are reserved by the a
 
 ### **Contact**  
 For inquiries or feedback, contact:  
-**Email**: [mahdialaaaldi+codesavvy@gmail.com](mailto:mahdialaaaldi+codesavvy@gmail.com)
+**Email**: [mahdialaaaldin+codesavvy@gmail.com](mailto:mahdialaaaldin+codesavvy@gmail.com)
