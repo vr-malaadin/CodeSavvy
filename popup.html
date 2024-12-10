@@ -6,87 +6,118 @@
     <title>CodeSavvy</title>
     <style>
         body {
-            width: 200px;
-            padding: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e0f7fa;
-            color: #333;
+            width: 250px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
-        h1 {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .logo {
+            grid-column: 1 / -1;
             text-align: center;
             color: #00796b;
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px 15px;
+            font-size: 18px;
             margin-bottom: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #00796b;
-            color: white;
-            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
-            text-align: left;
-            padding-left: 50px;
-            background-repeat: no-repeat;
-            background-position: 15px center;
-            background-size: 20px 20px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        button:hover {
-            background-color: #004d40;
+            .button img {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 5px;
+            }
+
+            .button span {
+                font-size: 10px;
+                color: #666;
+            }
+
+            .button:hover {
+                background-color: #e0f7fa;
+                transform: scale(1.05);
+            }
+
+            .button:active {
+                transform: scale(0.95);
+            }
+        /* Design Mode Toggle Specific Styles */
+        #designModeToggle .button-icon {
+            background: url('Icons/switch-off-icon.png') no-repeat center;
+            background-size: contain;
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+            transition: background-image 0.3s ease;
         }
 
-        button:active {
-            transform: scale(0.97);
-        }
-
-        #unlockElements {
-            background-image: url('Icons/icon-body.png');
-        }
-
-        #unlimitedMaxLengthButton {
-            background-image: url('Icons/icon-unlimited.png');
-        }
-
-        #disableLoader {
-            background-image: url('Icons/loader.png');
-        }
-
-        #designModeToggle {
-            background-image: url('Icons/switch-off-icon.png');
-        }
-
-        #designModeToggle.active {
+        #designModeToggle.active .button-icon {
             background-image: url('Icons/switch-on-icon.png');
-        }
-
-        #clearCacheButton {
-            background-image: url('Icons/clearCache.png');
-        }
-
-        #fullscreenButton {
-            background-image: url('Icons/fullScreen.png')
-        }
-
-        #screenshotButton {
-            background-image: url('Icons/screenshot.png')
         }
     </style>
 </head>
 <body>
-    <h1>CodeSavvy</h1>
-    <button id="unlockElements">Unlock Elements</button>
-    <button id="disableLoader">Disable Loader</button>
-    <button id="clearCacheButton">Clear Cache</button>
-    <button id="unlimitedMaxLengthButton">Unlimited MaxLength</button>
-    <button id="designModeToggle">Toggle Design Mode</button>
-    <button id="screenshotButton">Take Screenshot</button>
-    <button id="fullscreenButton"> Fullscreen</button>
+    <div class="container">
+        <div class="logo">CodeSavvy</div>
+
+        <div class="button" id="unlockElements">
+            <img src="Icons/icon-body.png" alt="Unlock">
+            <span>Unlock Elements</span>
+        </div>
+
+        <div class="button" id="disableLoader">
+            <img src="Icons/loader.png" alt="Loader">
+            <span>Disable Loader</span>
+        </div>
+
+        <div class="button" id="clearCacheButton">
+            <img src="Icons/clearCache.png" alt="Clear Cache">
+            <span>Clear Cache</span>
+        </div>
+
+        <div class="button" id="unlimitedMaxLengthButton">
+            <img src="Icons/icon-unlimited.png" alt="Unlimited">
+            <span>Unlimited Length</span>
+        </div>
+
+        <div class="button" id="designModeToggle">
+            <div class="button-icon"></div>
+            <span>Design Mode</span>
+        </div>
+
+        <div class="button" id="screenshotButton">
+            <img src="Icons/screenshot.png" alt="Screenshot">
+            <span>Screenshot</span>
+        </div>
+
+        <div class="button" id="fullscreenButton">
+            <img src="Icons/fullScreen.png" alt="Fullscreen">
+            <span>Fullscreen</span>
+        </div>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>

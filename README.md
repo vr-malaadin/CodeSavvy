@@ -1,6 +1,6 @@
 # **CodeSavvy Extension**
 
-A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, and toggling design mode effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
+A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, toggling design mode, taking screenshots, and making web pages full screen effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
 
 ---
 
@@ -21,7 +21,11 @@ A powerful browser extension designed to enhance web page interactions by unlock
 5. **Clear Cache**  
    Clears the browser cache and reloads the current tab.
 
-![image](https://github.com/user-attachments/assets/fb912f3c-f530-48cb-840d-f6b5eb5287ca)
+6. **Take Screenshots**  
+   Captures a screenshot of the visible part of the current tab and saves it with the tab's title as the file name.
+
+7. **Make Page Full Screen**  
+   Expands the web page to full screen, providing an immersive view.
 
 ---
 
@@ -44,12 +48,11 @@ git clone https://github.com/vr-malaadin/CodeSavvy.git
 ### Buttons:
 - **Unlock Elements**: Makes disabled elements editable.
 - **Unlimited MaxLength**: Removes character limits in input fields.
-- **Disable Loader**: Hides loading animations or overlays.(Specific for Vanrise)
+- **Disable Loader**: Hides loading animations or overlays. (Specific for Vanrise)
 - **Toggle Design Mode**: Switches design mode on/off for editing page content.
 - **Clear Cache**: Clears the browser cache and reloads the active tab.
-
-### Design Mode State:
-- Button text and icon dynamically update to reflect the current state.
+- **Take Screenshot**: Captures and saves the visible part of the active tab as an image.
+- **Make Page Full Screen**: Expands the active tab's webpage to full screen mode.
 
 ---
 
@@ -66,7 +69,9 @@ CodeSavvy/
 │   ├── loader.png
 │   ├── switch-off-icon.png
 │   ├── switch-on-icon.png
-│   └── clearCache.png
+│   ├── clearCache.png
+│   ├── fullScreen.png
+│   └── screenshot.png
 └── README.md         # Documentation for the extension
 ```
 
@@ -87,12 +92,6 @@ Contributions are welcome! To contribute:
 1. Fork the repository.
 2. Create a new branch (`feature/your-feature-name`).
 3. Submit a pull request.
-
----
-
-## **Future Improvements**
-- Add customizable options for users to specify element classes or attributes.
-- Support for additional browsers like Firefox.
 
 ---
 
