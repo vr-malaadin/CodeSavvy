@@ -1,4 +1,4 @@
-# **CodeSavvy Extension**
+# **CodeSavvy Extension** 
 
 A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, toggling design mode, taking screenshots, and making web pages full screen effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
 
@@ -7,13 +7,13 @@ A powerful browser extension designed to enhance web page interactions by unlock
 ## **Features**
 
 1. **Unlock Elements**  
-   Removes the `disabled` attribute and specific classes (`divDisabled`) from elements, making them editable.
+   Removes the `disabled` attribute and specific classes (`divDisabled`) from elements (Specific for Vanrise), making them editable.
 
 2. **Unlimited MaxLength**  
    Removes `maxlength` restrictions from input fields to allow unlimited characters.
 
 3. **Disable Loaders**  
-   Removes loading indicators (e.g., elements with the `divLoading` class) from web pages.
+   Removes loading indicators (e.g., elements with the `divLoading` class) from web pages (Specific for Vanrise).
 
 4. **Toggle Design Mode**  
    Enables or disables the browser's design mode, allowing direct editing of the web page's content.
@@ -26,6 +26,16 @@ A powerful browser extension designed to enhance web page interactions by unlock
 
 7. **Make Page Full Screen**  
    Expands the web page to full screen, providing an immersive view.
+
+---
+
+## **Preview**
+
+Below is a preview of the CodeSavvy extension interface:
+
+![image](https://github.com/user-attachments/assets/b63e6fe9-3842-42e0-8d7f-8aca7d0515c9)
+
+The clean and compact design ensures quick access to tools like unlocking elements, disabling loaders, clearing cache, and more.
 
 ---
 
