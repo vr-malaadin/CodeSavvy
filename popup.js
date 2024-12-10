@@ -135,3 +135,30 @@ document.getElementById('clearCacheButton').addEventListener('click', () => {
         });
     });
 });
+
+document.getElementById('screenshotButton').addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const activeTab = tabs[0];
+        const tabTitle = activeTab.title.replace(/[^a-z0-9]/gi, '_');
+        chrome.tabs.captureVisibleTab(null, { format: 'png' }, (dataUrl) => {
+            const a = document.createElement('a');
+            a.href = dataUrl;
+            a.download = `${tabTitle}_screenshot.png`; 
+            a.click();
+        });
+    });
+});
+
+
+document.getElementById('fullscreenButton').addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: () => {
+                document.documentElement.requestFullscreen();
+            },
+        });
+    });
+});
+
+
