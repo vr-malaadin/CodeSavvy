@@ -4,9 +4,10 @@ document.getElementById('unlockElements').addEventListener('click', () => {
         chrome.scripting.executeScript({
             target: { tabId: activeTabId },
             func: () => {
-                document.querySelectorAll('[disabled], .divDisabled').forEach(el => {
+                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"]').forEach(el => {
                     el.classList.remove('divDisabled');
                     el.removeAttribute('disabled');
+                    el.removeAttribute('aria-disabled');
                 });
             }
         });
@@ -177,4 +178,17 @@ document.getElementById('fullscreenButton').addEventListener('click', () => {
     });
 });
 
+document.getElementById('revealPasswords').addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        let activeTabId = tabs[0].id;
+        chrome.scripting.executeScript({
+            target: { tabId: activeTabId },
+            func: () => {
+                document.querySelectorAll('input[type="password"]').forEach(input => {
+                    input.setAttribute('type', 'text');
+                });
+            }
+        });
+    });
+});
 
