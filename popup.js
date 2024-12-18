@@ -4,10 +4,9 @@ document.getElementById('unlockElements').addEventListener('click', () => {
         chrome.scripting.executeScript({
             target: { tabId: activeTabId },
             func: () => {
-                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"]').forEach(el => {
+                document.querySelectorAll('[disabled], .divDisabled').forEach(el => {
                     el.classList.remove('divDisabled');
                     el.removeAttribute('disabled');
-                    el.removeAttribute('aria-disabled');
                 });
             }
         });
@@ -50,15 +49,8 @@ document.getElementById('disableLoader').addEventListener('click', () => {
 // Function to update button state based on the current tab's design mode
 function updateButtonState(isDesignModeOn) {
     const button = document.getElementById('designModeToggle');
-    const buttonIcon = button.querySelector('.button-icon');
-    // Explicitly toggle the active class
-    if (isDesignModeOn) {
-        button.classList.add('active');
-        buttonIcon.style.backgroundImage = "url('Icons/switch-on-icon.png')";
-    } else {
-        button.classList.remove('active');
-        buttonIcon.style.backgroundImage = "url('Icons/switch-off-icon.png')";
-    }
+    button.textContent = isDesignModeOn ? 'Turn Design Mode Off' : 'Turn Design Mode On';
+    button.classList.toggle('active', isDesignModeOn);
 }
 
 // Function to get the current tab's ID
@@ -129,16 +121,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     }
 });
 
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-    if (changeInfo.status === 'complete') {
-        const currentTabId = await getCurrentTabId();
-        if (tabId === currentTabId) {
-            const isDesignModeOn = await getDesignModeState(tabId);
-            updateButtonState(isDesignModeOn);
-        }
-    }
-});
-
 document.getElementById('clearCacheButton').addEventListener('click', () => {
     chrome.browsingData.remove({
         "since": 0 // Clear all cache
@@ -178,17 +160,33 @@ document.getElementById('fullscreenButton').addEventListener('click', () => {
     });
 });
 
-document.getElementById('revealPasswords').addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        let activeTabId = tabs[0].id;
-        chrome.scripting.executeScript({
-            target: { tabId: activeTabId },
-            func: () => {
-                document.querySelectorAll('input[type="password"]').forEach(input => {
-                    input.setAttribute('type', 'text');
-                });
-            }
-        });
-    });
+
+
+document.getElementById('changeFont').addEventListener('click', () => {
+    document.getElementById('fontModal').style.display = 'flex';
 });
 
+document.getElementById('applyFont').addEventListener('click', () => {
+    const fontSelector = document.getElementById('fontSelector');
+    const selectedFont = fontSelector.value;
+
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            func: (font) => {
+                // Apply the font to all elements except code sections
+                document.querySelectorAll('*:not(code):not(pre):not([class*="code"])').forEach(element => {
+                    element.style.fontFamily = font;
+                });
+            },
+            args: [selectedFont]
+        });
+    });
+
+    document.getElementById('fontModal').style.display = 'none';
+});
+
+
+document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('fontModal').style.display = 'none';
+});
