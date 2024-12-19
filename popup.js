@@ -4,9 +4,10 @@ document.getElementById('unlockElements').addEventListener('click', () => {
         chrome.scripting.executeScript({
             target: { tabId: activeTabId },
             func: () => {
-                document.querySelectorAll('[disabled], .divDisabled').forEach(el => {
+                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"]').forEach(el => {
                     el.classList.remove('divDisabled');
                     el.removeAttribute('disabled');
+                    el.removeAttribute('aria-disabled');
                 });
             }
         });
@@ -37,10 +38,6 @@ document.getElementById('disableLoader').addEventListener('click', () => {
                 document.querySelectorAll('.divLoading').forEach(el => {
                     el.classList.remove('divLoading');
                 });
-                //document.querySelectorAll('[disabled], .divDisabled').forEach(el => {
-                //     el.classList.remove('divDisabled');
-                //     el.removeAttribute('disabled');
-                // });
             }
         });
     });
