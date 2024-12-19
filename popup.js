@@ -187,3 +187,17 @@ document.getElementById('applyFont').addEventListener('click', () => {
 document.getElementById('closeModal').addEventListener('click', () => {
     document.getElementById('fontModal').style.display = 'none';
 });
+
+document.getElementById('revealPasswords').addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        let activeTabId = tabs[0].id;
+        chrome.scripting.executeScript({
+            target: { tabId: activeTabId },
+            func: () => {
+                document.querySelectorAll('input[type="password"]').forEach(input => {
+                    input.setAttribute('type', 'text');
+                });
+            }
+        });
+    });
+});
