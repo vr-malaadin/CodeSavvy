@@ -46,8 +46,10 @@ document.getElementById('disableLoader').addEventListener('click', () => {
 // Function to update button state based on the current tab's design mode
 function updateButtonState(isDesignModeOn) {
     const button = document.getElementById('designModeToggle');
-    button.textContent = isDesignModeOn ? 'Turn Design Mode Off' : 'Turn Design Mode On';
-    button.classList.toggle('active', isDesignModeOn);
+    if (isDesignModeOn)
+        button.classList.add('active');
+    else
+        button.classList.remove('active');
 }
 
 // Function to get the current tab's ID
