@@ -1,6 +1,6 @@
-# **CodeSavvy Extension** 
+# **CodeSavvy Extension**
 
-A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, toggling design mode, taking screenshots, and making web pages full screen effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
+A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, toggling design mode, taking screenshots, making web pages full screen, revealing passwords, and changing fonts effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
 
 ---
 
@@ -26,6 +26,12 @@ A powerful browser extension designed to enhance web page interactions by unlock
 
 7. **Make Page Full Screen**  
    Expands the web page to full screen, providing an immersive view.
+
+8. **Reveal Passwords**  
+   Converts password input fields to plain text, making it easier to view hidden passwords.
+
+9. **Change Font**  
+   Allows you to change the font of web page content (except for code sections) by selecting from a variety of fonts.
 
 ---
 
@@ -63,6 +69,8 @@ git clone https://github.com/vr-malaadin/CodeSavvy.git
 - **Clear Cache**: Clears the browser cache and reloads the active tab.
 - **Take Screenshot**: Captures and saves the visible part of the active tab as an image.
 - **Make Page Full Screen**: Expands the active tab's webpage to full screen mode.
+- **Reveal Passwords**: Converts password fields to text for easy viewing.
+- **Change Font**: Changes the font of the webpage content (except for code sections).
 
 ---
 
@@ -81,7 +89,8 @@ CodeSavvy/
 │   ├── switch-on-icon.png
 │   ├── clearCache.png
 │   ├── fullScreen.png
-│   └── screenshot.png
+│   ├── screenshot.png
+│   └── revealPasswords.png
 └── README.md         # Documentation for the extension
 ```
 
