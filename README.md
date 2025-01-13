@@ -39,7 +39,8 @@ A powerful browser extension designed to enhance web page interactions by unlock
 
 Below is a preview of the CodeSavvy extension interface:
 
-![image](https://github.com/user-attachments/assets/b63e6fe9-3842-42e0-8d7f-8aca7d0515c9)
+![image](https://github.com/user-attachments/assets/14ccf8b9-3934-415c-ae0e-ef803f015b74)
+
 
 The clean and compact design ensures quick access to tools like unlocking elements, disabling loaders, clearing cache, and more.
 
@@ -82,8 +83,11 @@ CodeSavvy/
 ├── popup.js          # Main JavaScript for handling functionality
 ├── manifest.json     # Metadata and permissions for the extension
 ├── Icons/            # Folder containing icons used in the UI
+│   ├── icon.png
+│   ├── icon16.png
+│   ├── icon48.png
+│   ├── icon128.png
 │   ├── icon-body.png
-│   ├── icon-unlimited.png
 │   ├── loader.png
 │   ├── switch-off-icon.png
 │   ├── switch-on-icon.png
@@ -120,5 +124,4 @@ This project does not currently have a license. All rights are reserved by the a
 ---
 
 ### **Contact**  
-For inquiries or feedback, contact:  
-**Email**: [mahdialaaaldin+codesavvy@gmail.com](mailto:mahdialaaaldin+codesavvy@gmail.com)
+For inquiries or feedback, contact me on my email **[here](mailto:mahdialaaaldin+codesavvy@gmail.com)**.
