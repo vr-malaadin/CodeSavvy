@@ -1,6 +1,6 @@
 # **CodeSavvy Extension**
 
-A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, toggling design mode, taking screenshots, making web pages full screen, revealing passwords, and changing fonts effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
+A powerful browser extension designed to enhance web page interactions by unlocking elements, removing loaders, clearing cache, toggling design mode, taking screenshots, making web pages full screen, revealing passwords, changing fonts, and performing text transformations effortlessly. Ideal for developers and power users looking to manipulate web pages in real-time.
 
 ---
 
@@ -33,6 +33,20 @@ A powerful browser extension designed to enhance web page interactions by unlock
 9. **Change Font**  
    Allows you to change the font of web page content (except for code sections) by selecting from a variety of fonts.
 
+10. **Text Actions (Beta)**  
+    Provides a context menu with various text transformation options that appear when the user selects text. The available actions include:
+    - Highlight Text
+    - Sentence case
+    - lower case
+    - UPPER CASE
+    - Capitalized Case
+    - altErNaTiNg CASE
+    - InVeRsE CaSe
+    - Title Case
+    - Slugify
+
+    **Note:** Text Actions are currently in **Beta** and may undergo further improvements.
+
 ---
 
 ## **Preview**
@@ -41,8 +55,12 @@ Below is a preview of the CodeSavvy extension interface:
 
 ![image](https://github.com/user-attachments/assets/14ccf8b9-3934-415c-ae0e-ef803f015b74)
 
-
 The clean and compact design ensures quick access to tools like unlocking elements, disabling loaders, clearing cache, and more.
+
+### Text Actions Context Menu (Beta)
+Here’s a screenshot of the **Text Actions** context menu in action:
+
+![Text Actions Context Menu](https://github.com/user-attachments/assets/14ccf8b9-3934-415c-ae0e-ef803f015b75)
 
 ---
 
@@ -73,6 +91,17 @@ git clone https://github.com/vr-malaadin/CodeSavvy.git
 - **Reveal Passwords**: Converts password fields to text for easy viewing.
 - **Change Font**: Changes the font of the webpage content (except for code sections).
 
+### Context Menu (Text Actions - Beta):
+- **Highlight Text**: Highlights the selected text.
+- **Sentence case**: Converts the selected text to sentence case.
+- **lower case**: Converts the selected text to lowercase.
+- **UPPER CASE**: Converts the selected text to uppercase.
+- **Capitalized Case**: Converts the selected text to capitalized case.
+- **altErNaTiNg CASE**: Converts the selected text to alternating case.
+- **InVeRsE CaSe**: Inverts the case of the selected text.
+- **Title Case**: Converts the selected text to title case.
+- **Slugify**: Converts the selected text to a URL-friendly slug.
+
 ---
 
 ## **File Structure**
@@ -81,6 +110,7 @@ git clone https://github.com/vr-malaadin/CodeSavvy.git
 CodeSavvy/
 ├── popup.html        # The extension's HTML interface
 ├── popup.js          # Main JavaScript for handling functionality
+├── background.js     # Background script for context menu and text actions
 ├── manifest.json     # Metadata and permissions for the extension
 ├── Icons/            # Folder containing icons used in the UI
 │   ├── icon.png
@@ -106,6 +136,9 @@ The extension requires the following Chrome permissions:
 - `activeTab`: To access the active tab's DOM and perform actions.
 - `scripting`: To inject scripts into the active tab.
 - `browsingData`: To clear cache.
+- `contextMenus`: To create context menu items for text actions.
+- `storage`: To store extension settings and preferences.
+- `tabs`: To interact with browser tabs.
 
 ---
 
