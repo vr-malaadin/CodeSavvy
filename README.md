@@ -60,7 +60,8 @@ The clean and compact design ensures quick access to tools like unlocking elemen
 ### Text Actions Context Menu (Beta)
 Here’s a screenshot of the **Text Actions** context menu in action:
 
-![Text Actions Context Menu](https://github.com/user-attachments/assets/14ccf8b9-3934-415c-ae0e-ef803f015b75)
+![image](https://github.com/user-attachments/assets/52e3709a-660b-4647-898e-c1186ec039e2)
+
 
 ---
 
