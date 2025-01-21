@@ -4,10 +4,11 @@ document.getElementById('unlockElements').addEventListener('click', () => {
         chrome.scripting.executeScript({
             target: { tabId: activeTabId },
             func: () => {
-                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"]').forEach(el => {
-                    el.classList.remove('divDisabled');
+                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"], [readonly]').forEach(el => {
+                    el.classList.remove('divDisabled'); // custom class
                     el.removeAttribute('disabled');
                     el.removeAttribute('aria-disabled');
+                    el.removeAttribute('readonly');
                 });
             }
         });
