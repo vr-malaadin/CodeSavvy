@@ -169,21 +169,76 @@ document.getElementById('applyFont').addEventListener('click', () => {
     const fontSelector = document.getElementById('fontSelector');
     const selectedFont = fontSelector.value;
 
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            func: (font) => {
-                // Apply the font to all elements except code sections
-                document.querySelectorAll('*:not(code):not(pre):not([class*="code"])').forEach(element => {
-                    element.style.fontFamily = font;
-                });
-            },
-            args: [selectedFont]
+    // List of system fonts that don't require import
+    const systemFonts = [
+        "Comic Sans MS", "Tahoma", "Trebuchet MS", "Lucida Sans Unicode",
+        "Lucida Grande", "Palatino", "Impact", "Wingdings", "Arial Black",
+        "Consolas", "Segoe UI", "Helvetica", "Helvetica Neue", "Times"
+    ];
+
+    // URLs for the Google Fonts
+    const googleFontsUrl = {
+        'Poppins': "https://fonts.googleapis.com/css2?family=Poppins&display=swap",
+        'Lexend Deca': "https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap",
+        'EB Garamond': "https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap",
+        'STIX Two Text': "https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap",
+        'Andika': "https://fonts.googleapis.com/css2?family=Andika&display=swap",
+        'Atkinson Hyperlegible': "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap",
+        'Roboto': "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
+        'Lato': "https://fonts.googleapis.com/css2?family=Lato&display=swap",
+        'Open Sans': "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
+        'Oswald': "https://fonts.googleapis.com/css2?family=Oswald&display=swap",
+        'Montserrat': "https://fonts.googleapis.com/css2?family=Montserrat&display=swap",
+        'Merriweather': "https://fonts.googleapis.com/css2?family=Merriweather&display=swap",
+        'Raleway': "https://fonts.googleapis.com/css2?family=Raleway&display=swap",
+        'Lora': "https://fonts.googleapis.com/css2?family=Lora&display=swap",
+        'Playfair Display': "https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap",
+        'Ubuntu': "https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+    };
+
+    // Check if the selected font is a system font (i.e., no need to import)
+    if (systemFonts.includes(selectedFont)) {
+        // No need to load any Google Font, just apply the system font directly
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.scripting.executeScript({
+                target: { tabId: tabs[0].id },
+                func: (font) => {
+                    document.querySelectorAll('*:not(code):not(pre):not([class*="code"])').forEach(element => {
+                        element.style.fontFamily = font;
+                    });
+                },
+                args: [selectedFont]
+            });
         });
-    });
+    } else {
+        // If the font is a Google Font, load it and apply it
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.scripting.executeScript({
+                target: { tabId: tabs[0].id },
+                func: (font, fontUrl) => {
+                    let link = document.querySelector(`link[href="${fontUrl}"]`);
+                    if (!link) {
+                        // Create a link tag for the font if not already loaded
+                        link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.href = fontUrl;
+                        document.head.appendChild(link);
+                    }
+
+                    // Apply the font to all elements except code sections
+                    document.querySelectorAll('*:not(code):not(pre):not([class*="code"])').forEach(element => {
+                        element.style.fontFamily = font;
+                    });
+                },
+                args: [selectedFont, googleFontsUrl[selectedFont]]
+            });
+        });
+    }
 
     document.getElementById('fontModal').style.display = 'none';
 });
+
+
 
 
 document.getElementById('closeModal').addEventListener('click', () => {
