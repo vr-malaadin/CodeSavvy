@@ -4,7 +4,7 @@ document.getElementById('unlockElements').addEventListener('click', () => {
         chrome.scripting.executeScript({
             target: { tabId: activeTabId },
             func: () => {
-                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"], [readonly]').forEach(el => {
+                document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"], [readonly], .disabled').forEach(el => {
                     ['divDisabled', 'disabled', 'aria-disabled', 'readonly'].forEach(cls => el.classList.remove(cls));
                     ['disabled', 'aria-disabled', 'readonly'].forEach(attr => el.removeAttribute(attr));
                 });
