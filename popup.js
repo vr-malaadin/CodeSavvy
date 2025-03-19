@@ -5,10 +5,8 @@ document.getElementById('unlockElements').addEventListener('click', () => {
             target: { tabId: activeTabId },
             func: () => {
                 document.querySelectorAll('[disabled], .divDisabled, [aria-disabled="true"], [readonly]').forEach(el => {
-                    el.classList.remove('divDisabled'); // custom class
-                    el.removeAttribute('disabled');
-                    el.removeAttribute('aria-disabled');
-                    el.removeAttribute('readonly');
+                    ['divDisabled', 'disabled', 'aria-disabled', 'readonly'].forEach(cls => el.classList.remove(cls));
+                    ['disabled', 'aria-disabled', 'readonly'].forEach(attr => el.removeAttribute(attr));
                 });
             }
         });
@@ -255,6 +253,24 @@ document.getElementById('revealPasswords').addEventListener('click', () => {
                 document.querySelectorAll('input[type="password"]').forEach(input => {
                     input.setAttribute('type', 'text');
                 });
+            }
+        });
+    });
+});
+
+document.getElementById('blackFont').addEventListener('click', () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        let activeTabId = tabs[0].id;
+        chrome.scripting.executeScript({
+            target: { tabId: activeTabId },
+            func: () => {
+                const style = document.createElement('style');
+                style.innerHTML = `
+  *:not(code, code *, pre, pre *) {
+    color: #000000 !important;
+  }
+`;
+                document.head.appendChild(style);
             }
         });
     });
