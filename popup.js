@@ -258,20 +258,20 @@ document.getElementById('revealPasswords').addEventListener('click', () => {
     });
 });
 
-document.getElementById('blackFont').addEventListener('click', () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        let activeTabId = tabs[0].id;
-        chrome.scripting.executeScript({
-            target: { tabId: activeTabId },
-            func: () => {
-                const style = document.createElement('style');
-                style.innerHTML = `
-  *:not(code, code *, pre, pre *) {
-    color: #000000 !important;
-  }
-`;
-                document.head.appendChild(style);
-            }
-        });
-    });
-});
+//document.getElementById('blackFont').addEventListener('click', () => {
+//    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+//        let activeTabId = tabs[0].id;
+//        chrome.scripting.executeScript({
+//            target: { tabId: activeTabId },
+//            func: () => {
+//                const style = document.createElement('style');
+//                style.innerHTML = `
+//  *:not(code, code *, pre, pre *) {
+//    color: #000000 !important;
+//  }
+//`;
+//                document.head.appendChild(style);
+//            }
+//        });
+//    });
+//});
