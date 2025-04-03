@@ -180,3 +180,17 @@ async function updateDesignModeState() {
     const isDesignModeOn = await executeInTab(() => document.designMode === 'on');
     document.getElementById('designModeToggle')?.classList.toggle('active', isDesignModeOn);
 }
+
+
+//For quote
+document.addEventListener("DOMContentLoaded", () => {
+    getQuote()
+        .then(quote => {
+            document.getElementById("quote").innerText = `${quote}`;
+        })
+        .catch(error => {
+            console.error("Error fetching quote:", error);
+            // Fallback quote in case of error
+            document.getElementById("quote").innerText = `"Make it work, make it right, make it fast"`;
+        });
+});

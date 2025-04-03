@@ -91,29 +91,29 @@
             position: relative;
         }
 
-            .button:hover {
-                transform: translateY(-2px);
-                box-shadow: var(--shadow);
-                border-color: var(--primary);
-            }
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
 
-            .button:active {
-                transform: translateY(0);
-            }
+        .button:active {
+            transform: translateY(0);
+        }
 
-            .button img {
-                width: 20px;
-                height: 20px;
-                margin-bottom: 6px;
-            }
+        .button img {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 6px;
+        }
 
-            .button span {
-                font-size: 11px;
-                font-weight: 500;
-                color: var(--text);
-                text-align: center;
-                line-height: 1.2;
-            }
+        .button span {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text);
+            text-align: center;
+            line-height: 1.2;
+        }
 
         #designModeToggle .button-icon {
             width: 24px;
@@ -205,6 +205,14 @@
             background-color: var(--border);
             color: var(--text);
         }
+
+         .quote {
+            text-align: center;
+            font-family: Georgia, serif;
+            font-style: italic;
+            border-top: 1px solid var(--border);
+         }
+
     </style>
 </head>
 <body>
@@ -313,7 +321,11 @@
             </div>
         </div>
     </div>
+	<div class="section quote">
+		<p id="quote">Loading your quote...</p>
+	</div>
 
+    <script src="apiService.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>

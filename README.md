@@ -105,12 +105,25 @@ git clone https://github.com/vr-malaadin/CodeSavvy.git
 
 ---
 
+### **User API Setup for Quote**
+
+To enable the **Programming Quote of the Day** feature, you will need to add your own API key:
+
+1. Locate the `user_api.json` file in your local project folder.
+2. Open the file and replace `"YOUR_OWN_API_KEY_HERE"` with your personal GEMINI API key (this key should be obtained from Google AI Studio).
+3. Save the file.
+
+**Important:** This file is local to your machine. Make sure to enter your own API key in the `"YOUR_OWN_API_KEY_HERE"` spot. Once set, the extension will fetch daily quotes from the API. If there is an issue with the API or key, the extension will fall back to a default static quote.
+
+---
+
 ## **File Structure**
 
 ```
 CodeSavvy/
 ├── popup.html        # The extension's HTML interface
 ├── popup.js          # Main JavaScript for handling functionality
+├── apiService.js     # JavaScript file handling API service and quote fetching
 ├── background.js     # Background script for context menu and text actions
 ├── manifest.json     # Metadata and permissions for the extension
 ├── Icons/            # Folder containing icons used in the UI
@@ -126,6 +139,7 @@ CodeSavvy/
 │   ├── fullScreen.png
 │   ├── screenshot.png
 │   └── revealPasswords.png
+├── user_api.json     # JSON file where you add your GEMINI_API_KEY
 └── README.md         # Documentation for the extension
 ```
 
