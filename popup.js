@@ -143,9 +143,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('fontModal').style.display = 'none';
     });
 
+    document.getElementById('disableLoader').addEventListener('click', () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            let activeTabId = tabs[0].id;
+            chrome.scripting.executeScript({
+                target: { tabId: activeTabId },
+                func: () => {
+                    document.querySelectorAll('.divLoading').forEach(el => {
+                        el.classList.remove('divLoading');
+                    });
+                }
+            });
+        });
+    });
+
     // Other button handlers (simplified)
     const buttonActions = {
-        disableLoader: () => executeInTab(() => document.querySelectorAll('.divLoading').forEach(el => el.remove())),
         clearCacheButton: async () => {
             await chrome.browsingData.remove({ since: 0 }, { cache: true });
             chrome.tabs.reload((await chrome.tabs.query({ active: true, currentWindow: true }))[0].id);
